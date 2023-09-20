@@ -1,0 +1,17 @@
+galaxy_info:
+  role_name: grafana_promtail
+  author: Madalin Ignisca
+  description: Installs, configures and manages Grafana Promtail
+  license: BSD-3-Clause
+  min_ansible_version: "2.14"
+  platforms:
+  - name: Debian
+    versions:
+    - bookworm
+
+  galaxy_tags:
+  - grafana
+  - loki
+  - promtail
+
+dependencies: []

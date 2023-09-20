@@ -1,0 +1,19 @@
+---
+- name: Add an Apt signing key, will not download if present
+  ansible.builtin.get_url:
+  url: "https://apt.grafana.com/gpg.key"
+  dest: /etc/apt/keyrings/grafana.gpg
+  id: B53AE77BADB630A683046005963FA27710458545
+
+- name: Add specified repository into sources list using specified filename
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+    state: present
+    filename: grafana
+
+- name: Install promtail
+  ansible.builtin.apt:
+    name: promtail
+    state: latest
+  notify:
+  - Restart promtail
